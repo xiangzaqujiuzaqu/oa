@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-29 14:49:05 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.bawu.oa.entity">
+    <class name="User" table="USER_INFO">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="account" type="java.lang.String">
+            <column name="ACCOUNT" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="realName" type="java.lang.String">
+            <column name="REAL_NAME" />
+        </property>
+        <property name="sex" type="java.lang.Integer">
+            <column name="SEX" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="AGE" />
+        </property>
+        <property name="mobile" type="java.lang.String">
+            <column name="MOBILE" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="identity" type="java.lang.String">
+            <column name="IDENTITY" />
+        </property>
+        <property name="entryTime" type="java.util.Date">
+            <column name="ENTRY_TIME" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATE_TIME" />
+        </property>
+        <set name="roles" table="USER_ROLE" lazy="false">
+            <key>
+                <column name="user_id" />
+            </key>
+            <many-to-many class="Role" column="role_id"/>
+        </set>
+        
+         <set name="overs" table="OVERTIME" lazy="false">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <one-to-many class="Overtime"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-10-9 14:13:31 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.bawu.oa.entity.Attendance" table="ATTENDANCE">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        <property name="signIn" type="java.util.Date">
+            <column name="SIGN_IN" />
+        </property>
+        <property name="signOut" type="java.util.Date">
+            <column name="SIGN_OUT" />
+        </property>
+        <property name="ip" type="java.lang.String">
+            <column name="IP" />
+        </property>
+    </class>
+</hibernate-mapping>

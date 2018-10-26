@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+		<title>考勤统计</title>
+		<script type="text/javascript">
+			// 分页查询
+			function userPage(page) {
+				$("#pageNo").val(page);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="container" style="width: 100%;padding: 25px 15px;">
+			<div class="row clearfix">
+				<div class="col-md-12 column" style="padding: 20px;">
+					<div style="float: left;">
+						<label>月份：</label>
+						<input type="text" name="date" placeholder="yyyy-MM" value="">
+					</div>
+					<form action="<%=path %>/attendanceStatistics/export.action" method="post" id="attendanceForm" role="form" class="form-inline" style="float: right;margin-bottom: 10px;">
+						<input type="submit" id="exportExcel" class="btn btn-primary btn" name="exportExcel" value="批量导出" />
+					</form>
+					<table class="table table-bordered" style="margin-top: 20px;">
+						<thead>
+							<tr>
+								<th style="width: 150px;">用户名</th>
+								<th>迟到时间</th>
+								<th>早退时间</th>
+								<th>应上班时间</th>
+								<th>实上班时间</th>
+								<th>加班时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${!empty attendanceStatistics}">
+								  <tr class="success">
+                            
+                            
+                                <td>翡翠</td>
+                                <td>1小时</td>
+                                <td>9小时</td>
+                                <td>8小时</td>
+                                <td>-2小时</td>
+                                <td>0小时</td>
+                            </tr>
+
+							</c:if>
+							<c:if test="${empty attendanceStatistics }">
+								<tr>
+									<td colspan="9" style="text-align: center;"></td>
+								</tr>
+							</c:if>
+						</tbody>
+					</table>
+					
+					<span>共10条记录 共1页 当前第1页</span>
+					<!-- 分页 -->
+					
+					<ul class="pagination" style="float: right;margin: 0;">
+						<li><a href="javascript:void(0)" onclick="attendPage(1)">首页</a></li>
+								<li><a href="javascript:void(0)" onclick="attendPage(-1)">上一页</a></li>
+								<li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+						<li><a href="javascript:void(0)" onclick="attendPage()">尾页</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+
+</html>
